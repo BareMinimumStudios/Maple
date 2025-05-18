@@ -1,10 +1,19 @@
+import org.jetbrains.kotlin.gradle.dsl.KotlinProjectExtension
+
 plugins {
     kotlin("jvm") version "2.0.10"
-    id("earth.terrarium.cloche") version "0.7.20"
+    id("earth.terrarium.cloche") version "0.9.13"
 }
 
 repositories {
-    maven(url = "https://maven.msrandom.net/repository/root")
+    cloche {
+        mavenForge()
+        mavenFabric()
+        mavenNeoforged()
+        mavenNeoforgedMeta()
+        librariesMinecraft()
+        main()
+    }
     maven(url = "https://thedarkcolour.github.io/KotlinForForge/")
 }
 
@@ -33,7 +42,7 @@ cloche {
         }
 
         dependencies {
-            fabricApi("0.92.3+1.20.1")
+            fabricApi("0.92.3")
             modImplementation(module(
                 group = "net.fabricmc",
                 name = "fabric-language-kotlin",
@@ -54,7 +63,7 @@ cloche {
         }
 
         dependencies {
-            fabricApi("0.102.0+1.21")
+            fabricApi("0.102.0")
             modImplementation(module(
                 group = "net.fabricmc",
                 name = "fabric-language-kotlin",
@@ -97,5 +106,9 @@ cloche {
                 version = "5.7.0"
             ))
         }
+    }
+
+    configure<KotlinProjectExtension> {
+        explicitApi()
     }
 }

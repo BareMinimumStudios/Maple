@@ -1,32 +1,33 @@
 package xyz.naomieow.maple
 
-import net.minecraft.network.chat.Component
-import xyz.naomieow.maple.widgets.Alignment
 import xyz.naomieow.maple.widgets.Widget
 
-enum class Msg {
-    INCREMENT,
-    DECREMENT,
+sealed interface Msg {
+    data class INCREMENT(val value: Int): Msg
+    data class DECREMENT(val value: Int): Msg
 }
 
-class ExampleApp : Maple<Msg>(
-    title = Component.literal("Example Screen")
-) {
+class ExampleApp : Maple<Msg>() {
     var counter: Int = 0
 
-    override fun update(msg: Msg) {
+    override fun init(): Effect<Msg> {
+        return Effect.none()
+    }
+
+    override fun update(msg: Msg): Effect<Msg> {
         when (msg) {
-            Msg.INCREMENT -> counter += 1
-            Msg.DECREMENT -> counter -= 1
+            is Msg.INCREMENT -> {
+                counter += msg.value
+                return Effect.none()
+            }
+            is Msg.DECREMENT -> {
+                counter -= msg.value
+                return Effect.none()
+            }
         }
     }
 
     override fun view(): Widget<Msg> {
-        return column(
-            button(label("+")).onClick(Msg.INCREMENT),
-            label("$counter"),
-            button(label("-")).onClick(Msg.DECREMENT),
-        ).xAlign(Alignment.CENTER)
-        .yAlign(Alignment.CENTER)
+        return column()
     }
 }
