@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinProjectExtension
 
 plugins {
     kotlin("jvm") version "2.0.10"
-    id("earth.terrarium.cloche") version "0.9.13"
+    id("earth.terrarium.cloche") version "0.9.24"
 }
 
 repositories {
@@ -14,7 +14,8 @@ repositories {
         librariesMinecraft()
         main()
     }
-    maven(url = "https://thedarkcolour.github.io/KotlinForForge/")
+    maven("https://thedarkcolour.github.io/KotlinForForge/")
+    maven("https://maven.terraformersmc.com/")
 }
 
 version = "1.0.0"
@@ -48,6 +49,7 @@ cloche {
                 name = "fabric-language-kotlin",
                 version = "1.13.1+kotlin.2.1.10"
             ))
+            modRuntimeOnly("com.terraformersmc:modmenu:7.2.2")
         }
     }
 
@@ -69,6 +71,7 @@ cloche {
                 name = "fabric-language-kotlin",
                 version = "1.13.1+kotlin.2.1.10"
             ))
+            modRuntimeOnly("com.terraformersmc:modmenu:11.0.3")
         }
     }
 

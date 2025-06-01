@@ -3,8 +3,8 @@ package xyz.naomieow.maple
 import xyz.naomieow.maple.widgets.Widget
 
 sealed interface Msg {
-    data class INCREMENT(val value: Int): Msg
-    data class DECREMENT(val value: Int): Msg
+    data class INCREMENT(val value: Int) : Msg
+    data class DECREMENT(val value: Int) : Msg
 }
 
 class ExampleApp : Maple<Msg>() {
