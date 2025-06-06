@@ -3,7 +3,7 @@ cloche {
         modId = "maple"
         name = "Maple"
         description = "Simple UI building library"
-        license = "LGPL-3.0"
+        license = "MIT"
 
         author("naomieow")
     }

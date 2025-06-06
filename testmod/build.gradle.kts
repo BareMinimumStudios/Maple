@@ -3,7 +3,7 @@ cloche {
         modId = "maple-testmod"
         name = "Maple Testmod"
         description = "Testmod for Maple UI library"
-        license = "LGPL-3.0"
+        license = "MIT"
 
         author("naomieow")
     }
