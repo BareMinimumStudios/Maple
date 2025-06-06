@@ -1,5 +1,7 @@
-package xyz.naomieow.maple
+package xyz.naomieow.maple_testmod
 
+import xyz.naomieow.maple.Effect
+import xyz.naomieow.maple.Maple
 import xyz.naomieow.maple.widgets.Widget
 
 sealed interface Msg {
@@ -7,7 +9,7 @@ sealed interface Msg {
     data class DECREMENT(val value: Int) : Msg
 }
 
-class ExampleApp : Maple<Msg>() {
+class ExampleScreen : Maple<Msg>() {
     var counter: Int = 0
 
     override fun init(): Effect<Msg> {

@@ -6,7 +6,7 @@ private enum class EffectType {
 
 class Effect<Msg> private constructor(private val type: EffectType) {
     companion object {
-        fun none(): Effect<Msg> {
+        fun <Msg> none(): Effect<Msg> {
             return Effect(EffectType.NONE)
         }
     }
