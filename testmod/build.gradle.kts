@@ -8,7 +8,7 @@ cloche {
         author("naomieow")
     }
 
-    fabric("fabric:1.20.1") {
+    fabric("fabric+1.20.1") {
         minecraftVersion = "1.20.1"
         loaderVersion = "0.16.10"
 
@@ -30,7 +30,7 @@ cloche {
         }
     }
 
-    fabric("fabric:1.21") {
+    fabric("fabric+1.21") {
         minecraftVersion = "1.21"
         loaderVersion = "0.16.10"
 
@@ -52,7 +52,7 @@ cloche {
         }
     }
 
-    forge("forge:1.20.1") {
+    forge("forge+1.20.1") {
         minecraftVersion = "1.20.1"
         loaderVersion = "47.3.0"
 
@@ -70,7 +70,7 @@ cloche {
         }
     }
 
-    neoforge("neoforge:1.21") {
+    neoforge("neoforge+1.21") {
         minecraftVersion = "1.21"
         loaderVersion = "21.0.167"
 

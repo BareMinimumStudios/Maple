@@ -1,5 +1,5 @@
 [plugins]
-cloche = { id = "earth.terrarium.cloche", version = "0.9.24" }
+cloche = { id = "earth.terrarium.cloche", version = "0.10.0" }
 
 [versions]
 kotlin = "2.0.10"
