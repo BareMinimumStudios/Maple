@@ -1,6 +1,9 @@
+version = "1.0.0"
+group = "xyz.naomieow.maple_testmod"
+
 cloche {
     metadata {
-        modId = "maple-testmod"
+        modId = "maple_testmod"
         name = "Maple Testmod"
         description = "Testmod for Maple UI library"
         license = "MIT"
@@ -8,9 +11,9 @@ cloche {
         author("naomieow")
     }
 
-    fabric("fabric+1.20.1") {
+    fabric("fabric:1.20.1") {
         minecraftVersion = "1.20.1"
-        loaderVersion = "0.16.10"
+        loaderVersion = libs.versions.fabric.loader
 
         client()
 
@@ -19,20 +22,40 @@ cloche {
         }
 
         dependencies {
-            fabricApi("0.92.3")
-            modImplementation(module(
-                group = "net.fabricmc",
-                name = "fabric-language-kotlin",
-                version = "1.13.1+kotlin.2.1.10"
-            ))
-            modImplementation(project(":maple"))
-            modRuntimeOnly("com.terraformersmc:modmenu:7.2.2")
+            fabricApi(libs.versions.fabric.api.v1201)
+            modImplementation(libs.fabric.kotlin)
+            modImplementation(project(":"))
+            modRuntimeOnly(libs.fabric.modmenu.v1201)
+        }
+
+        metadata {
+            dependencies {
+                dependency {
+                    modId = "maple"
+                    required = true
+                    version("1.0.0")
+                }
+                dependency {
+                    modId = "fabric-language-kotlin"
+                    required = true
+                    version(libs.versions.fabric.kotlin.get())
+                }
+            }
+
+            entrypoint("main") {
+                value = "xyz.naomieow.maple_testmod.MapleTestmodFabric"
+                adapter = "kotlin"
+            }
+            entrypoint("client") {
+                value = "xyz.naomieow.maple_testmod.MapleTestmodFabricClient"
+                adapter = "kotlin"
+            }
         }
     }
 
-    fabric("fabric+1.21") {
+    fabric("fabric:1.21") {
         minecraftVersion = "1.21"
-        loaderVersion = "0.16.10"
+        loaderVersion = libs.versions.fabric.loader
 
         client()
 
@@ -41,50 +64,59 @@ cloche {
         }
 
         dependencies {
-            fabricApi("0.102.0")
-            modImplementation(module(
-                group = "net.fabricmc",
-                name = "fabric-language-kotlin",
-                version = "1.13.1+kotlin.2.1.10"
-            ))
-            modImplementation(project(":maple"))
-            modRuntimeOnly("com.terraformersmc:modmenu:11.0.3")
+            fabricApi(libs.versions.fabric.api.v121)
+            modImplementation(libs.fabric.kotlin)
+            modImplementation(project(":"))
+            modRuntimeOnly(libs.fabric.modmenu.v121)
+        }
+
+        metadata {
+            entrypoint("main") {
+                value = "xyz.naomieow.maple_testmod.MapleTestmodFabric"
+                adapter = "kotlin"
+            }
+            entrypoint("client") {
+                value = "xyz.naomieow.maple_testmod.MapleTestmodFabricClient"
+                adapter = "kotlin"
+            }
         }
     }
 
-    forge("forge+1.20.1") {
+    forge("forge:1.20.1") {
         minecraftVersion = "1.20.1"
-        loaderVersion = "47.3.0"
+        loaderVersion = libs.versions.forge.loader
 
         runs {
             client()
         }
 
         dependencies {
-            implementation(module(
-                group = "thedarkcolour",
-                name = "kotlinforforge",
-                version = "4.11.0"
-            ))
-            modImplementation(project(":maple"))
+            implementation(libs.forge.kotlin)
+            modImplementation(project(":"))
+        }
+
+        metadata {
+            loaderVersion("4")
+            modLoader = "kotlinforforge"
         }
     }
 
-    neoforge("neoforge+1.21") {
+    neoforge("neoforge:1.21") {
         minecraftVersion = "1.21"
-        loaderVersion = "21.0.167"
+        loaderVersion = libs.versions.neoforge.loader
 
         runs {
             client()
         }
 
         dependencies {
-            implementation(module(
-                group = "thedarkcolour",
-                name = "kotlinforforge-neoforge",
-                version = "5.7.0"
-            ))
-            modImplementation(project(":maple"))
+            implementation(libs.neoforge.kotlin)
+            modImplementation(project(":"))
+        }
+
+        metadata {
+            loaderVersion("5")
+            modLoader = "kotlinforforge"
         }
     }
 }

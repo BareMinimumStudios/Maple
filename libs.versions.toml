@@ -1,5 +1,30 @@
-[plugins]
-cloche = { id = "earth.terrarium.cloche", version = "0.10.0" }
-
 [versions]
+# Common
 kotlin = "2.0.10"
+cloche = "0.10.13"
+# Fabric
+fabric-kotlin = "1.13.1+kotlin.2.1.10"
+fabric-loader = "0.16.10"
+fabric-api-v1201 = "0.92.3"
+fabric-api-v121 = "0.102.0"
+fabric-modmenu-v1201 = "7.2.2"
+fabric-modmenu-v121 = "11.0.3"
+# Forge
+forge-kotlin = "4.11.0"
+forge-loader = "47.3.0"
+# NeoForge
+neoforge-kotlin = "5.8.0"
+neoforge-loader = "21.0.167"
+
+[libraries]
+# Fabric
+fabric-kotlin = { module = "net.fabricmc:fabric-language-kotlin", version.ref = "fabric-kotlin" }
+fabric-modmenu-v1201 = { module = "com.terraformersmc:modmenu", version.ref = "fabric-modmenu-v1201" }
+fabric-modmenu-v121 = { module = "com.terraformersmc:modmenu", version.ref = "fabric-modmenu-v121" }
+# Forge
+forge-kotlin = { module = "thedarkcolour:kotlinforforge", version.ref = "forge-kotlin" }
+# NeoForge
+neoforge-kotlin = { module = "thedarkcolour:kotlinforforge-neoforge", version.ref = "neoforge-kotlin" }
+
+[plugins]
+cloche = { id = "earth.terrarium.cloche", version.ref = "cloche" }

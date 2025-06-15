@@ -1,5 +1,5 @@
 rootProject.name = "maple"
-include("testmod", "maple")
+include("testmod")
 
 pluginManagement {
     repositories {
